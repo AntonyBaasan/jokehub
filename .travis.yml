@@ -1,6 +1,9 @@
 language: java
 jdk: oraclejdk8
 
+before_install:
+  - chmod +x mvnw
+
 script:
 - mvn -N io.takari:maven:wrapper
 - ./mvnw clean install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
@@ -8,7 +11,6 @@ script:
 - ./mvnw cobertura:cobertura
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-
 
 env:
   global:
