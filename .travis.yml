@@ -7,15 +7,8 @@ before_install:
 script:
 - mvn -N io.takari:maven:wrapper
 - ./mvnw clean install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-- ./mvnw test -B
 - ./mvnw cobertura:cobertura
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
-env:
-  global:
-    - "FTP_USER=user"
-    - "FTP_PASSWORD=password"
-after_success:
-#  - if: branch =~ ^deploy
-  - "curl --ftp-create-dirs -T target/jokehub-0.0.1-SNAPSHOT.jar -u $FTP_USER:$FTP_PASSWORD ftp://$HOST_IP/directory/myfile"
+
