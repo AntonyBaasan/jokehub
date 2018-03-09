@@ -9,7 +9,7 @@ public class JokeServiceImpl implements JokeService{
     public Joke getRandomJoke() {
         Joke j = new Joke();
         j.setName("Test joke");
-        j.setName("Very long description");
+        j.setDescription("Very long description");
         return j;
     }
 }
