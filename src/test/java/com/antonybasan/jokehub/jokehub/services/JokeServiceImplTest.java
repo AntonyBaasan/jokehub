@@ -3,9 +3,15 @@ package com.antonybasan.jokehub.jokehub.services;
 import com.antonybasan.jokehub.jokehub.domain.Joke;
 import com.antonybasan.jokehub.jokehub.domain.icanhazdadjoke.IcanDadJoke;
 import com.antonybasan.jokehub.jokehub.services.util.HttpUtilsService;
+import com.antonybasan.jokehub.jokehub.services.util.HttpUtilsServiceImpl;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
@@ -61,12 +67,10 @@ public class JokeServiceImplTest {
 //    @Test
 //    public void restRequestTest() {
 //
-//        ResponseEntity<IcanDadJoke> j = r.exchange("https://icanhazdadjoke.com/", HttpMethod.GET, (HttpEntity<?>) entity, IcanDadJoke.class);
-//        HttpStatus statusCode = j.getStatusCode();
-//        IcanDadJoke joke = j.getBody();
+//        HttpUtilsService s = new HttpUtilsServiceImpl();
+//        IcanDadJoke j = s.sendRequest("https://icanhazdadjoke.com/", IcanDadJoke.class);
 //
-//        System.out.println(statusCode.toString());
-//        System.out.println(joke.getJoke().toString());
+//        System.out.println(j.getJoke().toString());
 //    }
 
 
