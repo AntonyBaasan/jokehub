@@ -13,7 +13,6 @@ after_success:
 
 cache:
   directories:
-  - .autoconf
   - $HOME/.m2
 
 

@@ -58,16 +58,16 @@ public class JokeServiceImplTest {
         verify(httpUtilsService, times(1)).sendRequest("https://icanhazdadjoke.com/", IcanDadJoke.class);
     }
 
-    @Test
-    public void restRequestTest() {
-
+//    @Test
+//    public void restRequestTest() {
+//
 //        ResponseEntity<IcanDadJoke> j = r.exchange("https://icanhazdadjoke.com/", HttpMethod.GET, (HttpEntity<?>) entity, IcanDadJoke.class);
 //        HttpStatus statusCode = j.getStatusCode();
 //        IcanDadJoke joke = j.getBody();
 //
 //        System.out.println(statusCode.toString());
 //        System.out.println(joke.getJoke().toString());
-    }
+//    }
 
 
 }
