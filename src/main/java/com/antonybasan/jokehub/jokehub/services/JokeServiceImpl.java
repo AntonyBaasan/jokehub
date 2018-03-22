@@ -2,21 +2,26 @@ package com.antonybasan.jokehub.jokehub.services;
 
 import com.antonybasan.jokehub.jokehub.domain.Joke;
 import com.antonybasan.jokehub.jokehub.domain.icanhazdadjoke.IcanDadJoke;
+import com.antonybasan.jokehub.jokehub.services.util.HttpUtilsService;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 @Service
 public class JokeServiceImpl implements JokeService {
+
+    private HttpUtilsService httpUtilsService;
+
+    public JokeServiceImpl(HttpUtilsService httpUtilsService) {
+        this.httpUtilsService = httpUtilsService;
+    }
+
     @Override
     public Joke getRandomJoke() {
-        Joke j = new Joke();
-        j.setName("Test joke");
-        j.setDescription("Very long description");
+        Joke j = getJokeByType(JokeServiceEnum.DAD);
         return j;
     }
 
-    public Joke getJokeByType(String jokeType) {
-        if (jokeType == "dad") {
+    public Joke getJokeByType(JokeServiceEnum jokeType) {
+        if (jokeType == JokeServiceEnum.DAD) {
             return getDadJoke();
         }
 
@@ -24,8 +29,8 @@ public class JokeServiceImpl implements JokeService {
     }
 
     private Joke getDadJoke() {
-        RestTemplate restTemplate = new RestTemplate();
-        IcanDadJoke dadJoke = restTemplate.getForObject("https://icanhazdadjoke.com/", IcanDadJoke.class);
+
+        IcanDadJoke dadJoke = httpUtilsService.sendRequest("https://icanhazdadjoke.com/", IcanDadJoke.class);
 
         Joke j = new Joke();
         j.setName(dadJoke.getId());
